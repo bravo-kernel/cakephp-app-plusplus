@@ -41,12 +41,13 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('Route');
 
-/**
- * Here, we tell the Router to parse .json extensions
- */
-Router::parseExtensions(['json']);
-
 Router::scope('/', function ($routes) {
+
+    /**
+     * Here, we tell the Router to parse .json extensions
+     */
+     $routes->extensions(['json', 'xml']);
+
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
