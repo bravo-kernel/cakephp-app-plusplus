@@ -9,7 +9,8 @@
         "cakephp/cakephp": "3.0.*-dev",
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "dev-master",
-        "cakephp/plugin-installer": "*"
+        "cakephp/plugin-installer": "*",
+        "FriendsOfCake/crud": "dev-cake3"
     },
     "require-dev": {
         "d11wtq/boris": "1.0.*",
