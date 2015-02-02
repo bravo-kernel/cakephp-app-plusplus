@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fef073db81dbf2d1ee26ec0862695563",
+    "hash": "297df832cbb5deac7516094c45f20ca5",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -124,6 +124,52 @@
                 "localization"
             ],
             "time": "2014-08-24 00:00:00"
+        },
+        {
+            "name": "cakephp/bake",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/bake.git",
+                "reference": "c31e15747f090906bd6110f743c708d65786655c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/c31e15747f090906bd6110f743c708d65786655c",
+                "reference": "c31e15747f090906bd6110f743c708d65786655c",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "3.0.x-dev",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "2.0.*-dev",
+                "phpunit/phpunit": "*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Bake\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/cakephp/bake/graphs/contributors"
+                }
+            ],
+            "description": "Bake plugin for CakePHP 3.0",
+            "homepage": "https://github.com/cakephp/bake",
+            "keywords": [
+                "bake",
+                "cakephp"
+            ],
+            "time": "2015-01-29 02:00:10"
         },
         {
             "name": "cakephp/cakephp",
@@ -843,52 +889,6 @@
     ],
     "packages-dev": [
         {
-            "name": "cakephp/bake",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakephp/bake.git",
-                "reference": "c31e15747f090906bd6110f743c708d65786655c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/c31e15747f090906bd6110f743c708d65786655c",
-                "reference": "c31e15747f090906bd6110f743c708d65786655c",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "3.0.x-dev",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "2.0.*-dev",
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Bake\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "CakePHP Community",
-                    "homepage": "https://github.com/cakephp/bake/graphs/contributors"
-                }
-            ],
-            "description": "Bake plugin for CakePHP 3.0",
-            "homepage": "https://github.com/cakephp/bake",
-            "keywords": [
-                "bake",
-                "cakephp"
-            ],
-            "time": "2015-01-29 02:00:10"
-        },
-        {
             "name": "cakephp/debug_kit",
             "version": "3.0.x-dev",
             "source": {
@@ -986,8 +986,8 @@
         "cakephp/cakephp": 20,
         "cakephp/migrations": 20,
         "friendsofcake/crud": 20,
-        "cakephp/debug_kit": 20,
-        "cakephp/bake": 20
+        "cakephp/bake": 20,
+        "cakephp/debug_kit": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
