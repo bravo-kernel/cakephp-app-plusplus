@@ -30,4 +30,11 @@
 		</listener>
 	</listeners>
 
+	<!-- Exclude files and directories in the blacklist from coverage -->
+	<filter>
+		<blacklist>
+			<directory>./vendor</directory>
+		</blacklist>
+	</filter>
+
 </phpunit>
