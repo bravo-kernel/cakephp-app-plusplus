@@ -5,6 +5,7 @@
  * In this file, you set up routes to your controllers and their actions.
  *
  */
+use App\Lib\Kickstart;
 use Cake\Core\Plugin;
 use Cake\Filesystem\Folder;
 use Cake\Routing\Router;
@@ -23,12 +24,11 @@ Router::prefix('api', function ($routes) {
     $routes->extensions(['json', 'xml']);
 
     // mapResources for all Controller files found in /src/Controller/Api
-    $dir = new Folder(APP . 'Controller' . DS . 'Api');
-    $controllerFiles = $dir->find('.*Controller\.php');
-    if ($controllerFiles) {
-        foreach ($controllerFiles as $controllerFile) {
-            $routes->resources(substr($controllerFile, 0, strlen($controllerFile) - 14));
-         }
+    $controllers = Kickstart::getApiControllers();
+    if ($controllers) {
+        foreach ($controllers as $controller) {
+            $routes->resources($controller);
+        }
     }
 });
 
