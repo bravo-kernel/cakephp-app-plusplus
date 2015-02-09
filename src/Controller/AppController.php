@@ -80,7 +80,7 @@ class AppController extends Controller
     {
         parent::initialize();
 
-        if (Configure::read('Auth.enabled')) {
+        if (Configure::read('Security.Authentication.enabled')) {
             $this->setupAuth();
         }
     }
