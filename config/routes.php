@@ -40,6 +40,13 @@ Router::prefix('api', function ($routes) {
 Router::scope('/', function ($routes) {
 
     /**
+     * Use /users for TinyAuth URLs instead of /accounts
+     */
+     $routes->connect('/accounts/*', ['controller' => null]);
+     $routes->connect('/users/login', ['controller' => 'Accounts', 'action' => 'login'], ['routeClass' => 'InflectedRoute']);
+     $routes->connect('/users/register', ['controller' => 'Accounts', 'action' => 'register'], ['routeClass' => 'InflectedRoute']);
+
+    /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
