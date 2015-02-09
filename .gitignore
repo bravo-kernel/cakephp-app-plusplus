@@ -1,6 +1,6 @@
-/vendor/*
 /config/app.php
-/tmp/*
 /logs/*
-/webroot/coverage/*
 /plugins/*
+/tmp/*
+/vendor/*
+/webroot/coverage/*
