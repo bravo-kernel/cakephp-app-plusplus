@@ -25,7 +25,7 @@ class Users extends AbstractMigration {
             ->addColumn('email', 'string')
             ->addColumn('password', 'string')
             ->addColumn('slug', 'string')
-            ->addColumn('role', 'integer', ['signed' => false, 'default' => '1'])
+            ->addColumn('role_id', 'integer', ['signed' => false, 'default' => '1'])
             ->addColumn('created', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('modified', 'datetime', ['null' => '1', 'default' => null])
             ->save();

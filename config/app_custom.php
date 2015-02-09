@@ -1,17 +1,42 @@
 <?php
 return [
-    'Auth' => [
-        'enabled' => true,
-        'identificationColumns' => [
-            'username'
+
+    /**
+     *
+     */
+    'Security' => [
+        'Authentication' => [
+            'enabled' => true,
+            'identificationColumns' => [
+                'username'
+            ]
+        ],
+        'Authorization' => [
+            'enabled' => true
         ]
     ],
 
+    /**
+     * Roles to use when authorization is enabled.
+     */
+    'Roles' => [
+        'user' => '1',
+        'admin' => '2'
+    ],
+
+    /**
+     * Enabling the API to:
+     * -
+     */
     'Api' => [
+        'enabled' => true,
         'extensions' => ['json'],
         'jwt' => true
     ],
 
+    /**
+     * Misc settings
+     */
     'Datasources' => [
         'default' => [
             'quoteIdentifiers' => true,
@@ -29,11 +54,6 @@ return [
     'Passwordable'  => [
         'passwordHasher' => ['className' => 'Fallback', 'hashers' => ['Default', 'Weak']]
     ],
-
-    'Roles' => array(
-        'admin' => '1',
-        'user' => '2',
-    ),
 
     'Config' => array(
         'pageName' => 'CakeFest App',

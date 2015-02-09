@@ -12,9 +12,9 @@ class UsersTable extends Table
         return $validator
             ->notEmpty('username', 'A username is required')
             ->notEmpty('password', 'A password is required')
-            ->notEmpty('role', 'A role is required')
-            ->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'author']],
+            ->notEmpty('role_id', 'A role is required')
+            ->add('role_id', 'inList', [
+                'rule' => ['inList', ['user', 'admin']],
                 'message' => 'Please enter a valid role'
             ]);
     }

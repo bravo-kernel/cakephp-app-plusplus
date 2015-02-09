@@ -111,7 +111,8 @@ class AppController extends Controller
 
 
     protected function setupAuth() {
-        $this->loadComponent('Auth', [
+
+        $authConfig = [
             'authenticate' => [
                 'FOC/Authenticate.MultiColumn' => [
                     'fields' => [
@@ -119,15 +120,12 @@ class AppController extends Controller
                         'password' => 'password'
                     ],
                     //'columns' => ['username', 'email'],
-                    'columns' => Configure::read('Auth.identificationColumns'),
+                    'columns' => Configure::read('Security.Authentication.identificationColumns'),
                     'userModel' => 'Users',
                     'passwordHasher' => Configure::read('Passwordable.passwordHasher')
                     //'scope' => array('User.email_confirmed' => 1)
                 ]
             ],
-            // 'authorize' => [
-            //     'TinyAuth.Tiny'
-            // ],
             'logoutRedirect' => [
                 'plugin' => false,
                 'admin' => false,
@@ -145,7 +143,9 @@ class AppController extends Controller
             'loginAction' => [
                 'plugin' => false,
                 'admin' => false,
-                'prefix' => false,                  /** has to be set for /api to redirect **/
+                 // prefix true breaks api, false redirects
+                 // unauthenticated /api to login
+                'prefix' => false,
                 'controller' => 'Accounts',
                 'action' => 'login'
             ],
@@ -156,8 +156,15 @@ class AppController extends Controller
                 'action' => 'display',
                 'home'
             ]
-        ]);
-    }
+        ];
 
+        if (Configure::read('Security.Authorization.enabled')) {
+            $authConfig['authorize'] = [
+                'TinyAuth.Tiny'
+            ];
+        }
+
+        $this->loadComponent('Auth', $authConfig);
+    }
 
 }
