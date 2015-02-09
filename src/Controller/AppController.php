@@ -1,9 +1,10 @@
 <?php
 namespace App\Controller;
 
-use Cake\Controller\Controller;
 use Cake\Event\Event;
-use Cake\Routing\Router;
+use Cake\Core\Plugin;
+use Cake\Core\Configure;
+use Tools\Controller\Controller;
 
 /**
  * Application Controller
@@ -19,7 +20,7 @@ class AppController extends Controller
     use \Crud\Controller\ControllerTrait;
 
     /**
-     * @var Components available to all views
+     * @var Components available to all controllers
      */
      public $components = [
          'RequestHandler',
@@ -45,8 +46,28 @@ class AppController extends Controller
                 'maxLimit' => 100,
                 'whitelist' => ['limit', 'sort', 'page', 'direction']
             ]
-        ]
+        ],
+        'Tools.Common',
+        'Tools.Flash',
+        'Tools.AuthUser'
      ];
+
+     /**
+      * @var Helpers available to all views
+      */
+      public $helpers = [
+          'Session',
+          //'Html',
+          'Tools.Form',
+          'Tools.Common',
+          'Tools.Flash',
+          'Tools.Format',
+          'Tools.Time',
+          'Tools.Number',
+          'Tools.AuthUser',
+          'Tools.Obfuscate',
+          'Tools.Js'
+      ];
 
     /**
      * Initialization hook method.
@@ -57,7 +78,11 @@ class AppController extends Controller
      */
     public function initialize()
     {
+        parent::initialize();
 
+        if (Configure::read('Auth.enabled')) {
+            $this->setupAuth();
+        }
     }
 
     /**
@@ -65,8 +90,74 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function beforeFilter(Event $event) {
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
 
+        // Do not allow access to these public actions when already logged in
+        $allowed = [
+            'Accounts' => ['login', 'lost_password', 'register']
+        ];
+        if (!$this->AuthUser->id()) {
+            return;
+        }
+        foreach ($allowed as $controller => $actions) {
+            if ($this->name === $controller && in_array($this->request->action, $actions)) {
+                $this->Flash->message('The page you tried to access is not relevant if you are already logged in. Redirected to main page.', 'info');
+                return $this->redirect($this->Auth->config('loginRedirect'));
+            }
+        }
     }
+
+
+    protected function setupAuth() {
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'FOC/Authenticate.MultiColumn' => [
+                    'fields' => [
+                        'username' => 'username',
+                        'password' => 'password'
+                    ],
+                    //'columns' => ['username', 'email'],
+                    'columns' => Configure::read('Auth.identificationColumns'),
+                    'userModel' => 'Users',
+                    'passwordHasher' => Configure::read('Passwordable.passwordHasher')
+                    //'scope' => array('User.email_confirmed' => 1)
+                ]
+            ],
+            // 'authorize' => [
+            //     'TinyAuth.Tiny'
+            // ],
+            'logoutRedirect' => [
+                'plugin' => false,
+                'admin' => false,
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ],
+            'loginRedirect' => [
+                'plugin' => false,
+                'admin' => false,
+                'controller' => 'Users',
+                'action' => 'index',
+                #'page' => 'home'
+            ],
+            'loginAction' => [
+                'plugin' => false,
+                'admin' => false,
+                'prefix' => false,                  /** has to be set for /api to redirect **/
+                'controller' => 'Accounts',
+                'action' => 'login'
+            ],
+            'unauthorizedRedirect' => [
+                'plugin' => false,
+                'admin' => false,
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+        ]);
+    }
+
 
 }

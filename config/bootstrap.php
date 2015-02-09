@@ -68,6 +68,11 @@ try {
     die($e->getMessage() . "\n");
 }
 
+/**
+ * Load custom application specific configuration.
+ */
+Configure::load('app_custom');
+
 // Load an environment local configuration file.
 // You can use a file like app_local.php to provide local overrides to your
 // shared configuration.
@@ -180,6 +185,8 @@ Request::addDetector('tablet', function ($request) {
  */
 
 Plugin::load('Migrations');
+Plugin::load('Tools', ['autoload' => true, 'bootstrap' => true]);
+Plugin::load('TinyAuth', ['bootstrap' => true]);
 Plugin::load('Crud');
 
 // Only try to load DebugKit in development mode

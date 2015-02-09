@@ -6,9 +6,11 @@
  *
  */
 use App\Lib\Kickstart;
+use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Filesystem\Folder;
 use Cake\Routing\Router;
+use Cake\Log\Log;
 
 /**
  * The default class to use for all routes
@@ -21,7 +23,7 @@ Router::defaultRouteClass('InflectedRoute');
 Router::prefix('api', function ($routes) {
 
     //  Enable .json extension parsing
-    $routes->extensions(['json', 'xml']);
+    $routes->extensions(Configure::read('Api.extensions'));
 
     // mapResources for all Controller files found in /src/Controller/Api
     $controllers = Kickstart::getApiControllers();
