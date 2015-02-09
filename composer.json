@@ -1,16 +1,19 @@
 {
-    "name": "cakephp/app",
-    "description": "CakePHP skeleton app",
+    "name": "alt3/cakephp-jumpstart",
+    "description": "CakePHP base application",
     "homepage": "http://cakephp.org",
     "type": "project",
     "license": "MIT",
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "3.0.*-dev",
-        "mobiledetect/mobiledetectlib": "2.*",
-        "cakephp/migrations": "dev-master",
         "cakephp/plugin-installer": "*",
-        "FriendsOfCake/crud": "dev-cake3"
+        "mobiledetect/mobiledetectlib": "2.*",
+        "dereuromark/cakephp-tinyauth": "dev-master",
+        "friendsofcake/authenticate": "dev-cake3",
+        "friendsofcake/crud": "dev-cake3",
+        "dereuromark/cakephp-tools": "dev-cake3",
+        "cakephp/migrations": "dev-master"
     },
     "require-dev": {
         "cakephp/debug_kit": "3.0.*-dev",

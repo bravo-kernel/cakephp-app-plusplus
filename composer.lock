@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e0ec1376c5fcd4dc63d64a0b33b7e10",
+    "hash": "d0b3c634768cccdb80032541932b0b1b",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -131,12 +131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "f3642fb61795a93295aef8f5116ddc89d5f42e11"
+                "reference": "2da74bd405a7c809b964870a45b1952ae5baba77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/f3642fb61795a93295aef8f5116ddc89d5f42e11",
-                "reference": "f3642fb61795a93295aef8f5116ddc89d5f42e11",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/2da74bd405a7c809b964870a45b1952ae5baba77",
+                "reference": "2da74bd405a7c809b964870a45b1952ae5baba77",
                 "shasum": ""
             },
             "require": {
@@ -190,7 +190,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-02-03 02:56:11"
+            "time": "2015-02-09 04:00:35"
         },
         {
             "name": "cakephp/migrations",
@@ -198,19 +198,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/migrations.git",
-                "reference": "1342694bac70b515b1a23c6fb7380f765ce0630f"
+                "reference": "0acd5acfe61591967eecadbb9cf547c8a603227e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/migrations/zipball/1342694bac70b515b1a23c6fb7380f765ce0630f",
-                "reference": "1342694bac70b515b1a23c6fb7380f765ce0630f",
+                "url": "https://api.github.com/repos/cakephp/migrations/zipball/0acd5acfe61591967eecadbb9cf547c8a603227e",
+                "reference": "0acd5acfe61591967eecadbb9cf547c8a603227e",
                 "shasum": ""
             },
             "require": {
                 "cakephp/cakephp": "3.0.x-dev",
-                "cakephp/plugin-installer": "*",
                 "php": ">=5.4",
-                "robmorgan/phinx": "*"
+                "robmorgan/phinx": "~0.4"
             },
             "require-dev": {
                 "cakephp/bake": "dev-master",
@@ -244,20 +243,20 @@
                 "cakephp",
                 "migrations"
             ],
-            "time": "2015-01-22 04:28:30"
+            "time": "2015-02-06 02:05:29"
         },
         {
             "name": "cakephp/plugin-installer",
-            "version": "0.0.8",
+            "version": "0.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/plugin-installer.git",
-                "reference": "439f14f774c6906a739b8f7e6dcbdf1fafd17934"
+                "reference": "87cb0b70fc642f4a4ce5b6d8006392f01e8d0260"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/plugin-installer/zipball/439f14f774c6906a739b8f7e6dcbdf1fafd17934",
-                "reference": "439f14f774c6906a739b8f7e6dcbdf1fafd17934",
+                "url": "https://api.github.com/repos/cakephp/plugin-installer/zipball/87cb0b70fc642f4a4ce5b6d8006392f01e8d0260",
+                "reference": "87cb0b70fc642f4a4ce5b6d8006392f01e8d0260",
                 "shasum": ""
             },
             "require-dev": {
@@ -270,7 +269,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Cake\\Composer\\": "src/"
+                    "Cake\\Composer\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -284,7 +283,210 @@
                 }
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
-            "time": "2015-01-23 14:25:46"
+            "time": "2015-02-06 02:06:07"
+        },
+        {
+            "name": "dereuromark/cakephp-shim",
+            "version": "3.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dereuromark/cakephp-shim.git",
+                "reference": "a5d1eaa7553bbd1e78c1828d2bb036ad8fcde6fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dereuromark/cakephp-shim/zipball/a5d1eaa7553bbd1e78c1828d2bb036ad8fcde6fb",
+                "reference": "a5d1eaa7553bbd1e78c1828d2bb036ad8fcde6fb",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "3.0.x-dev",
+                "php": ">=5.4"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "Shim"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shim\\": "src",
+                    "Shim\\Test\\Fixture\\": "tests\\Fixture"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Scherer",
+                    "homepage": "http://www.dereuromark.de",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A CakePHP plugin to shim applications between major framework versions.",
+            "homepage": "https://github.com/dereuromark/cakephp-shim",
+            "keywords": [
+                "cakephp",
+                "helpers",
+                "plugin",
+                "shim"
+            ],
+            "time": "2015-02-05 18:40:39"
+        },
+        {
+            "name": "dereuromark/cakephp-tinyauth",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dereuromark/cakephp-tinyauth.git",
+                "reference": "47fa95f4294c4770cf3a1cfbdebaba65b7bcc9ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dereuromark/cakephp-tinyauth/zipball/47fa95f4294c4770cf3a1cfbdebaba65b7bcc9ce",
+                "reference": "47fa95f4294c4770cf3a1cfbdebaba65b7bcc9ce",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "3.0.x-dev",
+                "php": ">=5.4"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "TinyAuth"
+            },
+            "autoload": {
+                "psr-4": {
+                    "TinyAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Scherer",
+                    "homepage": "http://www.dereuromark.de",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A CakePHP plugin to handle user authorization the easy way.",
+            "homepage": "https://github.com/dereuromark/cakephp-tinyauth",
+            "keywords": [
+                "authorization",
+                "cakephp",
+                "plugin",
+                "roles",
+                "tinyauth"
+            ],
+            "time": "2015-01-15 17:07:31"
+        },
+        {
+            "name": "dereuromark/cakephp-tools",
+            "version": "dev-cake3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dereuromark/cakephp-tools.git",
+                "reference": "91c86e217abaa7d2adcb963ac32b483e4079ca6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dereuromark/cakephp-tools/zipball/91c86e217abaa7d2adcb963ac32b483e4079ca6f",
+                "reference": "91c86e217abaa7d2adcb963ac32b483e4079ca6f",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "3.0.*-dev",
+                "cakephp/plugin-installer": "*",
+                "dereuromark/cakephp-shim": "3.0.*-dev",
+                "php": ">=5.4",
+                "yangqi/htmldom": "dev-master"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "Tools"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Scherer",
+                    "homepage": "http://www.dereuromark.de",
+                    "role": "Author"
+                }
+            ],
+            "description": "A CakePHP plugin containing lots of useful and reusable tools",
+            "homepage": "https://github.com/dereuromark/cakephp-tools",
+            "keywords": [
+                "behaviors",
+                "cakephp",
+                "components",
+                "datasources",
+                "helpers",
+                "plugin",
+                "tools",
+                "utils"
+            ],
+            "time": "2015-01-31 19:36:11"
+        },
+        {
+            "name": "friendsofcake/authenticate",
+            "version": "dev-cake3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfCake/Authenticate.git",
+                "reference": "694331b4fbb9e4d9177c70fbdd77a1d0481d39b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfCake/Authenticate/zipball/694331b4fbb9e4d9177c70fbdd77a1d0481d39b0",
+                "reference": "694331b4fbb9e4d9177c70fbdd77a1d0481d39b0",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "3.0.*-dev",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "FOC\\Authenticate\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ceeram",
+                    "role": "Author"
+                },
+                {
+                    "name": "ADmad",
+                    "homepage": "https://github.com/ADmad",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CakePHP plugin with authentication classes for AuthComponent.",
+            "homepage": "http://github.com/FriendsOfCake/Authenticate",
+            "keywords": [
+                "authenticate",
+                "cakephp"
+            ],
+            "time": "2015-02-04 19:01:40"
         },
         {
             "name": "friendsofcake/crud",
@@ -308,6 +510,9 @@
                 "phpunit/phpunit": "3.7.33"
             },
             "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "Crud"
+            },
             "autoload": {
                 "psr-4": {
                     "Crud\\": "src"
@@ -536,21 +741,20 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "v0.4.1",
+            "version": "v0.4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robmorgan/phinx.git",
-                "reference": "357210707c000f50edea802d84b74724ad122478"
+                "reference": "1bc1396392d4073b8b29ee5289e445889cbc12b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/357210707c000f50edea802d84b74724ad122478",
-                "reference": "357210707c000f50edea802d84b74724ad122478",
+                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/1bc1396392d4073b8b29ee5289e445889cbc12b5",
+                "reference": "1bc1396392d4073b8b29ee5289e445889cbc12b5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/class-loader": "~2.6.0",
                 "symfony/config": "~2.6.0",
                 "symfony/console": "~2.6.0",
                 "symfony/yaml": "~2.6.0"
@@ -564,8 +768,8 @@
             ],
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Phinx": "src/"
+                "psr-4": {
+                    "Phinx\\": "src/Phinx"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -578,6 +782,12 @@
                     "email": "robbym@gmail.com",
                     "homepage": "http://robmorgan.id.au",
                     "role": "Lead Developer"
+                },
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com",
+                    "homepage": "http://shadowhand.me",
+                    "role": "Developer"
                 }
             ],
             "description": "Phinx makes it ridiculously easy to manage the database migrations for your PHP app.",
@@ -589,57 +799,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2014-12-23 06:06:14"
-        },
-        {
-            "name": "symfony/class-loader",
-            "version": "v2.6.4",
-            "target-dir": "Symfony/Component/ClassLoader",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/ClassLoader.git",
-                "reference": "deac802f76910708ab50d039806cfd1866895b52"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ClassLoader/zipball/deac802f76910708ab50d039806cfd1866895b52",
-                "reference": "deac802f76910708ab50d039806cfd1866895b52",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "symfony/finder": "~2.0,>=2.0.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\ClassLoader\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Symfony ClassLoader Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-01-05 14:28:40"
+            "time": "2015-02-08 03:41:44"
         },
         {
             "name": "symfony/config",
@@ -839,6 +999,46 @@
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
             "time": "2015-01-25 04:39:26"
+        },
+        {
+            "name": "yangqi/htmldom",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yangqi/Htmldom.git",
+                "reference": "5fac0fd569350c0b90f0ad7a9c54634786a5d66e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yangqi/Htmldom/zipball/5fac0fd569350c0b90f0ad7a9c54634786a5d66e",
+                "reference": "5fac0fd569350c0b90f0ad7a9c54634786a5d66e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Yangqi\\Htmldom": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yangqi",
+                    "email": "i@yangqi.me"
+                }
+            ],
+            "description": "Simple Html Dom Parser for Laravel 4",
+            "keywords": [
+                "HTML Parser",
+                "laravel"
+            ],
+            "time": "2014-12-23 04:23:21"
         }
     ],
     "packages-dev": [
@@ -865,6 +1065,9 @@
                 "phpunit/phpunit": "*"
             },
             "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "Bake"
+            },
             "autoload": {
                 "psr-4": {
                     "Bake\\": "src"
@@ -894,12 +1097,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "85ad8958985b8cbbaa33628a016675a22ed57888"
+                "reference": "64a1033ccd1fc0f914a08ff083e690c72d30d3d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/85ad8958985b8cbbaa33628a016675a22ed57888",
-                "reference": "85ad8958985b8cbbaa33628a016675a22ed57888",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/64a1033ccd1fc0f914a08ff083e690c72d30d3d6",
+                "reference": "64a1033ccd1fc0f914a08ff083e690c72d30d3d6",
                 "shasum": ""
             },
             "require": {
@@ -943,15 +1146,18 @@
                 "debug",
                 "kit"
             ],
-            "time": "2015-01-31 14:43:39"
+            "time": "2015-02-06 03:43:37"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "cakephp/cakephp": 20,
-        "cakephp/migrations": 20,
+        "dereuromark/cakephp-tinyauth": 20,
+        "friendsofcake/authenticate": 20,
         "friendsofcake/crud": 20,
+        "dereuromark/cakephp-tools": 20,
+        "cakephp/migrations": 20,
         "cakephp/debug_kit": 20,
         "cakephp/bake": 20
     },
