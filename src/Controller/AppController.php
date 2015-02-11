@@ -4,6 +4,7 @@ namespace App\Controller;
 use Cake\Event\Event;
 use Cake\Core\Plugin;
 use Cake\Core\Configure;
+use Cake\Network\Exception\ForbiddenException;
 use Tools\Controller\Controller;
 
 /**
@@ -23,6 +24,7 @@ class AppController extends Controller
      * @var Components available to all controllers
      */
      public $components = [
+         //'Shim.Session',
          'RequestHandler',
          'Flash',
          'Crud.Crud' => [
@@ -56,7 +58,6 @@ class AppController extends Controller
       * @var Helpers available to all views
       */
       public $helpers = [
-          'Session',
           //'Html',
           'Tools.Form',
           'Tools.Common',
@@ -79,7 +80,6 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-
         if (Configure::read('Security.Authentication.enabled')) {
             $this->setupAuth();
         }
@@ -94,6 +94,11 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
 
+        // Only enable Tiny Authorization if enabled in app_custom.php
+        if (Configure::read('Security.Authorization.enabled')) {
+            $this->Auth->authorize = array('Tools.Tiny');
+        }
+
         // Do not allow access to these public actions when already logged in
         $allowed = [
             'Accounts' => ['login', 'lost_password', 'register']
@@ -101,6 +106,7 @@ class AppController extends Controller
         if (!$this->AuthUser->id()) {
             return;
         }
+
         foreach ($allowed as $controller => $actions) {
             if ($this->name === $controller && in_array($this->request->action, $actions)) {
                 $this->Flash->message('The page you tried to access is not relevant if you are already logged in. Redirected to main page.', 'info');
@@ -143,18 +149,18 @@ class AppController extends Controller
             'loginAction' => [
                 'plugin' => false,
                 'admin' => false,
-                 // prefix true breaks api, false redirects
-                 // unauthenticated /api to login
-                'prefix' => false,
+                'prefix' => false,      // true will break /api
                 'controller' => 'Accounts',
                 'action' => 'login'
             ],
+            // triggered when page is not authorized
             'unauthorizedRedirect' => [
                 'plugin' => false,
                 'admin' => false,
+                'prefix' => false,
                 'controller' => 'Pages',
                 'action' => 'display',
-                'home'
+                'unauthorized'
             ]
         ];
 
@@ -166,5 +172,21 @@ class AppController extends Controller
 
         $this->loadComponent('Auth', $authConfig);
     }
+
+    /**
+     * Catch unauthenticated or unauthorized requests so we can throw 403
+     * errors rendering json/xml for api requests.
+     *
+     * @param string $url
+     * @param int $status
+     * @param bool $exit
+     * @return void
+     */
+     public function redirect($url, $status = null, $exit = true) {
+         if ($this->request->is('api')) {
+             throw new ForbiddenException();
+         }
+         return parent::redirect($url, $status, $exit);
+     }
 
 }
