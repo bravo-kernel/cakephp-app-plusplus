@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * Constants used for TinyAuth role based authorization
+ */
+define('ROLE_USER', 1);
+define('ROLE_ADMIN', 2);
+
+
+/**
+ * Configure your app
+ */
 return [
 
     /**
@@ -18,10 +29,11 @@ return [
 
     /**
      * Roles to use when authorization is enabled.
+     * Constants defined in /config/bootstrap.php
      */
     'Roles' => [
-        'user' => '1',
-        'admin' => '2'
+        'user' => ROLE_USER,
+        'admin' => ROLE_ADMIN
     ],
 
     /**
