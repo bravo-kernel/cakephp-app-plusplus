@@ -99,7 +99,7 @@ class AppController extends Controller
             $this->Auth->authorize = array('Tools.Tiny');
         }
 
-        // Do not allow access to these public actions when already logged in
+        // Prevent already authenticated users accessing these public actions.
         $allowed = [
             'Accounts' => ['login', 'lost_password', 'register']
         ];
@@ -115,7 +115,11 @@ class AppController extends Controller
         }
     }
 
-
+    /**
+     * Used to configure authentication
+     *
+     * @return void
+     */
     protected function setupAuth() {
 
         $authConfig = [
@@ -125,13 +129,13 @@ class AppController extends Controller
                         'username' => 'username',
                         'password' => 'password'
                     ],
-                    //'columns' => ['username', 'email'],
                     'columns' => Configure::read('Security.Authentication.identificationColumns'),
                     'userModel' => 'Users',
                     'passwordHasher' => Configure::read('Passwordable.passwordHasher')
                     //'scope' => array('User.email_confirmed' => 1)
                 ]
             ],
+            // page to redirect to after user logout
             'logoutRedirect' => [
                 'plugin' => false,
                 'admin' => false,
@@ -139,6 +143,7 @@ class AppController extends Controller
                 'action' => 'display',
                 'home'
             ],
+            // page to redirect to after succesful authentication/login
             'loginRedirect' => [
                 'plugin' => false,
                 'admin' => false,
@@ -146,6 +151,7 @@ class AppController extends Controller
                 'action' => 'index',
                 #'page' => 'home'
             ],
+            // page shown for unauthenticated user accessing non-public action
             'loginAction' => [
                 'plugin' => false,
                 'admin' => false,
@@ -153,7 +159,7 @@ class AppController extends Controller
                 'controller' => 'Accounts',
                 'action' => 'login'
             ],
-            // triggered when page is not authorized
+            // page shown for authenticated user without page authorization
             'unauthorizedRedirect' => [
                 'plugin' => false,
                 'admin' => false,
@@ -163,19 +169,12 @@ class AppController extends Controller
                 'unauthorized'
             ]
         ];
-
-        if (Configure::read('Security.Authorization.enabled')) {
-            $authConfig['authorize'] = [
-                'TinyAuth.Tiny'
-            ];
-        }
-
         $this->loadComponent('Auth', $authConfig);
     }
 
     /**
-     * Catch unauthenticated or unauthorized requests so we can throw 403
-     * errors rendering json/xml for api requests.
+     * Catch unauthenticated or unauthorized requests so we can render 403
+     * json/xml errors for api requests.
      *
      * @param string $url
      * @param int $status
