@@ -32,6 +32,7 @@ Router::prefix('api', function ($routes) {
             $routes->resources($controller);
         }
     }
+    #$routes->fallbacks('InflectedRoute');
 });
 
 /**
@@ -44,6 +45,7 @@ Router::scope('/', function ($routes) {
      */
      $routes->connect('/accounts/*', ['controller' => null]);
      $routes->connect('/users/login', ['controller' => 'Accounts', 'action' => 'login'], ['routeClass' => 'InflectedRoute']);
+     $routes->connect('/users/logout', ['controller' => 'Accounts', 'action' => 'logout'], ['routeClass' => 'InflectedRoute']);
      $routes->connect('/users/register', ['controller' => 'Accounts', 'action' => 'register'], ['routeClass' => 'InflectedRoute']);
 
     /**
