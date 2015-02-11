@@ -94,11 +94,6 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
 
-        // Only enable Tiny Authorization if enabled in app_custom.php
-        if (Configure::read('Security.Authorization.enabled')) {
-            $this->Auth->authorize = array('Tools.Tiny');
-        }
-
         // Prevent already authenticated users accessing these public actions.
         $allowed = [
             'Accounts' => ['login', 'lost_password', 'register']
@@ -169,6 +164,14 @@ class AppController extends Controller
                 'unauthorized'
             ]
         ];
+
+        // Only enable Authorization if enabled in app_custom.php
+        if (Configure::read('Security.Authorization.enabled')) {
+            $authConfig['authorize'] = [
+                'TinyAuth.Tiny'
+            ];
+        }
+
         $this->loadComponent('Auth', $authConfig);
     }
 
