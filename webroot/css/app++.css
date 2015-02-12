@@ -1,0 +1,26 @@
+/**
+ * cake.css / base.css overrides
+ */
+header {
+    height: 35% !important;
+}
+.header {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.home .checks .caption {
+    font-weight: bold;
+    /*margin-left: 19px;*/
+}
+.home .checks {
+    margin-top: 1em;
+}
+.home .checks p {
+    margin-bottom: 0.5em;
+}
+.home .checks .success:before,
+.home .checks .problem:before {
+    font-size: 1.3em;
+    margin-right: 7px;
+}
