@@ -168,10 +168,17 @@ class AppController extends Controller
         // Only enable Authorization if enabled in app_custom.php
         if (Configure::read('Security.Authorization.enabled')) {
             $authConfig['authorize'] = [
-                'TinyAuth.Tiny'
+                'TinyAuth.Tiny' => [
+                    'autoClearCache' => true,  // true to generate new acl on every request
+                    'allowUser' => false,      // true to allow user access to all non-admin-prefixed resources
+                    'allowAdmin' => false,     // true to allow adminRole (id) access to all admin-prefixed resources
+                    'adminRole' => 'admin',    // required in combination with alloWuser
+                    'superAdminRole' => null   // id of role with access to ALL resources
+                ]
             ];
         }
 
+        // Load Auth and/or Authorize
         $this->loadComponent('Auth', $authConfig);
     }
 

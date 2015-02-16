@@ -2,7 +2,6 @@
 namespace App\Controller\Api;
 
 use App\Controller\AppController;
-#use Tools\Controller\Controller;
 
 /**
  * Placeholder class. Either extend this or replace it alltogether.
@@ -12,7 +11,5 @@ use App\Controller\AppController;
 
 class UsersController extends AppController
 {
-
-
 
 }

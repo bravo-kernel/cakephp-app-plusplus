@@ -3,8 +3,9 @@
 /**
  * Constants used for TinyAuth role based authorization
  */
-define('ROLE_USER', 1);
-define('ROLE_ADMIN', 2);
+define('ROLE_USERS', 1);
+define('ROLE_ADMINS', 2);
+define('ROLE_SUPERADMINS', 9);
 
 
 /**
@@ -19,7 +20,8 @@ return [
         'Authentication' => [
             'enabled' => true,
             'identificationColumns' => [
-                'username'
+                'username',
+                'email'
             ]
         ],
         'Authorization' => [
@@ -29,20 +31,26 @@ return [
 
     /**
      * Roles to use when authorization is enabled.
-     * Constants defined in /config/bootstrap.php
      */
     'Roles' => [
-        'user' => ROLE_USER,
-        'admin' => ROLE_ADMIN
+        'user' => ROLE_USERS,
+        'admin' => ROLE_ADMINS,
+        'supergirls' => ROLE_SUPERADMINS
     ],
 
     /**
-     * Enabling the API to:
-     * -
+     * ADMIN prefix configuration
+     */
+     'Admin' => [
+         'enabled' => true,
+    ],
+
+    /**
+     * API prefix configuration
      */
     'Api' => [
         'enabled' => true,
-        'extensions' => ['json'],
+        'extensions' => ['json', 'xml'],
         'jwt' => true
     ],
 

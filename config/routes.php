@@ -18,7 +18,7 @@ use Cake\Log\Log;
 Router::defaultRouteClass('InflectedRoute');
 
 /**
- * Prefixed API routes (served using Crud.ApiListener).
+ * Prefixed route /api (served using Crud.ApiListener).
  */
 Router::prefix('api', function ($routes) {
 
@@ -32,7 +32,13 @@ Router::prefix('api', function ($routes) {
             $routes->resources($controller);
         }
     }
-    #$routes->fallbacks('InflectedRoute');
+});
+
+/**
+ * Prefixed route /admin
+ */
+Router::prefix('admin', function ($routes) {
+    $routes->fallbacks('InflectedRoute');
 });
 
 /**
