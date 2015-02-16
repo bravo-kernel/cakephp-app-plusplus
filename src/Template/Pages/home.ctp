@@ -158,6 +158,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <?php endif; ?>
                     </p>
 
+                    <?php if (Configure::read('Admin.enabled')): ?>
+                        <p class="success">ADMIN prefix route is enabled</p>
+                    <?php else: ?>
+                        <p class="problem">ADMIN prefix route is not enabled.</p>
+                    <?php endif; ?>
+
                     <?php if (Configure::read('Api.enabled')): ?>
                         <p class="success">API prefix route is enabled</p>
                         <p class="success">API is serving
@@ -166,7 +172,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                 <?php endforeach; ?>
                         </p>
                     <?php else: ?>
-                        <p class="problem">API prefix route in not enabled.</p>
+                        <p class="problem">API prefix route is not enabled.</p>
                     <?php endif; ?>
                 </div>
 
