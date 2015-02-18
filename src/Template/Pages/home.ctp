@@ -63,6 +63,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="col-1-2">
                 <div class="platform checks">
                     <p class="caption">CakePHP</p>
+                    <p class="success">Running CakePHP <?= Configure::version(); ?></p>
                     <?php if (version_compare(PHP_VERSION, '5.4.16', '>=')): ?>
                         <p class="success">Your version of PHP is 5.4.16 or higher.</p>
                     <?php else: ?>
