@@ -1,9 +1,13 @@
 # CakePHP Application Skeleton ++
 
-Basically extends cakephp-app to allow for rapid Cake3.x prototyping with:
+Basically the cakephp-app skeleton with some additions to speed up Cake3.x prototyping.
+
+Comes pre-configured with:
 
 - CRUD plugin
-- /admin prefix route
 - /api prefixed route
-- TinyAuth
-- TinyAuthorization 
+- /admin prefix route
+- TinyAuth (basic user registration and login)
+- TinyAuthorize
+
+![](docs/sources/img/home.png)

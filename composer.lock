@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d0b3c634768cccdb80032541932b0b1b",
+    "hash": "a0166177111c5f4601114b26b07505b7",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -131,12 +131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "2da74bd405a7c809b964870a45b1952ae5baba77"
+                "reference": "cbb2d345477652efd6043a510dd3107a2b6b72b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/2da74bd405a7c809b964870a45b1952ae5baba77",
-                "reference": "2da74bd405a7c809b964870a45b1952ae5baba77",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/cbb2d345477652efd6043a510dd3107a2b6b72b6",
+                "reference": "cbb2d345477652efd6043a510dd3107a2b6b72b6",
                 "shasum": ""
             },
             "require": {
@@ -157,6 +157,7 @@
                 "cakephp/event": "self.version",
                 "cakephp/i18n": "self.version",
                 "cakephp/log": "self.version",
+                "cakephp/orm": "self.version",
                 "cakephp/utility": "self.version",
                 "cakephp/validation": "self.version"
             },
@@ -190,7 +191,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-02-09 04:00:35"
+            "time": "2015-02-17 15:26:01"
         },
         {
             "name": "cakephp/migrations",
@@ -198,12 +199,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/migrations.git",
-                "reference": "0acd5acfe61591967eecadbb9cf547c8a603227e"
+                "reference": "70cb70b71c7499bb6c90b5af11fb43a357e14376"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/migrations/zipball/0acd5acfe61591967eecadbb9cf547c8a603227e",
-                "reference": "0acd5acfe61591967eecadbb9cf547c8a603227e",
+                "url": "https://api.github.com/repos/cakephp/migrations/zipball/70cb70b71c7499bb6c90b5af11fb43a357e14376",
+                "reference": "70cb70b71c7499bb6c90b5af11fb43a357e14376",
                 "shasum": ""
             },
             "require": {
@@ -243,7 +244,7 @@
                 "cakephp",
                 "migrations"
             ],
-            "time": "2015-02-06 02:05:29"
+            "time": "2015-02-10 02:53:17"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -340,12 +341,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dereuromark/cakephp-tinyauth.git",
-                "reference": "47fa95f4294c4770cf3a1cfbdebaba65b7bcc9ce"
+                "reference": "bedf431ff4cca09d0e8a5ba3ec205ea8c9e484aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dereuromark/cakephp-tinyauth/zipball/47fa95f4294c4770cf3a1cfbdebaba65b7bcc9ce",
-                "reference": "47fa95f4294c4770cf3a1cfbdebaba65b7bcc9ce",
+                "url": "https://api.github.com/repos/dereuromark/cakephp-tinyauth/zipball/bedf431ff4cca09d0e8a5ba3ec205ea8c9e484aa",
+                "reference": "bedf431ff4cca09d0e8a5ba3ec205ea8c9e484aa",
                 "shasum": ""
             },
             "require": {
@@ -381,7 +382,7 @@
                 "roles",
                 "tinyauth"
             ],
-            "time": "2015-01-15 17:07:31"
+            "time": "2015-02-17 14:53:52"
         },
         {
             "name": "dereuromark/cakephp-tools",
@@ -389,17 +390,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dereuromark/cakephp-tools.git",
-                "reference": "91c86e217abaa7d2adcb963ac32b483e4079ca6f"
+                "reference": "a8e9df813ec7a3e9d7edfa52f8f82db8fb95fd16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dereuromark/cakephp-tools/zipball/91c86e217abaa7d2adcb963ac32b483e4079ca6f",
-                "reference": "91c86e217abaa7d2adcb963ac32b483e4079ca6f",
+                "url": "https://api.github.com/repos/dereuromark/cakephp-tools/zipball/a8e9df813ec7a3e9d7edfa52f8f82db8fb95fd16",
+                "reference": "a8e9df813ec7a3e9d7edfa52f8f82db8fb95fd16",
                 "shasum": ""
             },
             "require": {
                 "cakephp/cakephp": "3.0.*-dev",
-                "cakephp/plugin-installer": "*",
                 "dereuromark/cakephp-shim": "3.0.*-dev",
                 "php": ">=5.4",
                 "yangqi/htmldom": "dev-master"
@@ -436,7 +436,7 @@
                 "tools",
                 "utils"
             ],
-            "time": "2015-01-31 19:36:11"
+            "time": "2015-02-17 11:27:55"
         },
         {
             "name": "friendsofcake/authenticate",
@@ -1048,12 +1048,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/bake.git",
-                "reference": "c31e15747f090906bd6110f743c708d65786655c"
+                "reference": "82e5c4315091a89ab4494122a60896d47be50043"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/c31e15747f090906bd6110f743c708d65786655c",
-                "reference": "c31e15747f090906bd6110f743c708d65786655c",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/82e5c4315091a89ab4494122a60896d47be50043",
+                "reference": "82e5c4315091a89ab4494122a60896d47be50043",
                 "shasum": ""
             },
             "require": {
@@ -1061,13 +1061,10 @@
                 "php": ">=5.4"
             },
             "require-dev": {
-                "cakephp/cakephp-codesniffer": "2.0.*-dev",
+                "cakephp/cakephp-codesniffer": "dev-master",
                 "phpunit/phpunit": "*"
             },
             "type": "cakephp-plugin",
-            "extra": {
-                "installer-name": "Bake"
-            },
             "autoload": {
                 "psr-4": {
                     "Bake\\": "src"
@@ -1089,7 +1086,7 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2015-01-29 02:00:10"
+            "time": "2015-02-14 21:00:18"
         },
         {
             "name": "cakephp/debug_kit",
