@@ -1,17 +1,26 @@
 <?php
 
 /**
- * Constants used for TinyAuth role based authorization
+ * Optionally define TinyAuthorize role constants here so you can use them in
+ * your code. Make sure these ids match the actual role ids.
  */
 define('ROLE_USERS', 1);
 define('ROLE_ADMINS', 2);
-define('ROLE_SUPERADMINS', 9);
-
+define('ROLE_SUPERADMINS', 3);
 
 /**
  * Configure your app
  */
 return [
+
+    /**
+     * Define roles here if you do NOT want to use a Roles database table.
+     */
+    'Roles' => [
+        'user' => ROLE_USERS,
+        'admin' => ROLE_ADMINS,
+        'superadmin' => ROLE_SUPERADMINS
+    ],
 
     /**
      *
@@ -25,24 +34,18 @@ return [
             ]
         ],
         'Authorization' => [
-            'enabled' => true
+            'enabled' => true,
+            'roleColumn' => 'role_id', // only used in single-role mode
+            'rolesTable' => 'UserRoles', // name of Configure key (or database table class) holding available roles
+            'multiRole' => true // requires a pivot table (see /config/Migrations)
         ]
-    ],
-
-    /**
-     * Roles to use when authorization is enabled.
-     */
-    'Roles' => [
-        'user' => ROLE_USERS,
-        'admin' => ROLE_ADMINS,
-        'supergirls' => ROLE_SUPERADMINS
     ],
 
     /**
      * ADMIN prefix configuration
      */
      'Admin' => [
-         'enabled' => true,
+         'enabled' => true
     ],
 
     /**
