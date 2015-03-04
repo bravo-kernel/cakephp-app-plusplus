@@ -17,6 +17,12 @@ use Cake\Log\Log;
  */
 Router::defaultRouteClass('InflectedRoute');
 
+
+/**
+ * Connect /api/users/login to /users/login to keep the API entrance consistent.
+ */
+Router::connect('/api/users/login', ['controller' => 'Accounts', 'action' => 'login', 'prefix' => null], ['routeClass' => 'InflectedRoute']);
+
 /**
  * Prefixed route /api (served using Crud.ApiListener).
  */
