@@ -187,6 +187,7 @@ Request::addDetector('tablet', function ($request) {
 Plugin::load('Migrations');
 Plugin::load('Tools', ['autoload' => true, 'bootstrap' => true]);
 Plugin::load('TinyAuth', ['bootstrap' => true]);
+Plugin::load('ADmad/JwtAuth');
 Plugin::load('Crud');
 
 // Only try to load DebugKit in development mode

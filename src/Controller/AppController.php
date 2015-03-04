@@ -94,7 +94,12 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
 
-        // Prevent already authenticated users accessing these public actions.
+        // no special action neeeded
+        if ($this->request->is('api')) {
+            return;
+        }
+
+        // Disallow access to actions that don't make sense after being logged in.
         $allowed = [
             'Accounts' => ['login', 'lost_password', 'register']
         ];
@@ -102,10 +107,11 @@ class AppController extends Controller
             return;
         }
 
+        // disallow access to actions that don't make sense after being logged in
         foreach ($allowed as $controller => $actions) {
             if ($this->name === $controller && in_array($this->request->action, $actions)) {
-                $this->Flash->message('The page you tried to access is not relevant if you are already logged in. Redirected to main page.', 'info');
-                return $this->redirect($this->Auth->config('loginRedirect'));
+                 $this->Flash->message('The page you tried to access is not relevant if you are already logged in. Redirected to main page.', 'info');
+                 return $this->redirect($this->Auth->config('loginRedirect'));
             }
         }
     }
@@ -119,6 +125,14 @@ class AppController extends Controller
 
         $authConfig = [
             'authenticate' => [
+                'ADmad/JwtAuth.Jwt' => [
+                     'parameter' => '_token',
+                     'userModel' => 'Users',
+                     //'scope' => ['Users.active' => 1],
+                     'fields' => [
+                         'id' => 'id'
+                     ]
+                ],
                 'FOC/Authenticate.MultiColumn' => [
                     'fields' => [
                         'username' => 'username',
@@ -165,17 +179,28 @@ class AppController extends Controller
             ]
         ];
 
-        // Only enable Authorization if enabled in app_custom.php
+        // Enable Authorization using app_custom.php setting
         if (Configure::read('Security.Authorization.enabled')) {
             $authConfig['authorize'] = [
                 'TinyAuth.Tiny' => [
                     'autoClearCache' => true,  // true to generate new acl on every request
                     'allowUser' => false,      // true to allow user access to all non-admin-prefixed resources
                     'allowAdmin' => false,     // true to allow adminRole (id) access to all admin-prefixed resources
-                    'adminRole' => 'admin',    // required in combination with alloWuser
-                    'superAdminRole' => null   // id of role with access to ALL resources
+                    'adminRole' => 'admin',    // required in combination with allowAdmin
+                    'superAdminRole' => null,   // id of role with access to ALL resources
+                    'rolesTable' => Configure::read('Security.Authorization.rolesTable')
                 ]
             ];
+
+            // Use non-default role column using app_custom.php setting (single-role only)
+            if (Configure::read('Security.Authorization.roleColumn')) {
+                $authConfig['authorize']['TinyAuth.Tiny']['roleColumn'] = Configure::read('Security.Authorization.roleColumn');
+            }
+
+            // Enable multirole using app_custom.php setting
+            if (Configure::read('Security.Authorization.multiRole')) {
+                $authConfig['authorize']['TinyAuth.Tiny']['multiRole'] = true;
+            }
         }
 
         // Load Auth and/or Authorize

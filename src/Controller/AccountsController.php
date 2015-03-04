@@ -1,12 +1,14 @@
 <?php
 namespace App\Controller;
 
-use Cake\Event\Event;
+use Admad\Jwt;
 use App\Controller\AppController;
-use Tools\View\Helper\FormatHelper;
-use Tools\Network\Email\Email;
 use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Security;
+use Tools\Network\Email\Email;
+use Tools\View\Helper\FormatHelper;
 
 class AccountsController extends AppController {
 
@@ -24,9 +26,22 @@ class AccountsController extends AppController {
      * @return void
      */
     public function login() {
+
         if ($this->Common->isPosted()) {
             $user = $this->Auth->identify();
             if ($user) {
+
+                if ($this->request->is('api')) {
+                    // set up JWT token
+                    $tokenData = [
+                        'id' => $user['id']
+                    ];
+                    $token = \JWT::encode($tokenData, Security::salt());
+                    $this->set('token', $token);
+                    $this->set('_serialize', ['token']);
+                    return;
+                }
+
                 $this->Users->addBehavior('Tools.Passwordable', ['confirm' => false]);
                 $password = $this->request->data['password'];
 
@@ -49,6 +64,8 @@ class AccountsController extends AppController {
                 unset($user['password']);
                 $this->Auth->setUser($user);
                 $this->Flash->message(__('loggedInMessage'), 'success');
+
+
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->message(__('loggedInError'), 'error');
