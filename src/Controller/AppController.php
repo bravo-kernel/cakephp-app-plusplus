@@ -125,14 +125,6 @@ class AppController extends Controller
 
         $authConfig = [
             'authenticate' => [
-                'ADmad/JwtAuth.Jwt' => [
-                     'parameter' => '_token',
-                     'userModel' => 'Users',
-                     //'scope' => ['Users.active' => 1],
-                     'fields' => [
-                         'id' => 'id'
-                     ]
-                ],
                 'FOC/Authenticate.MultiColumn' => [
                     'fields' => [
                         'username' => 'username',
@@ -178,6 +170,22 @@ class AppController extends Controller
                 'unauthorized'
             ]
         ];
+
+        // Optionally enable JSON Web Token (JWT) authentication and set it as
+        // the primary authentication mechanism, FoC used as fallback.
+        if (Configure::read('Api.jwt')) {
+            $authConfig['authenticate'] = [
+                'ADmad/JwtAuth.Jwt' => [
+                    'parameter' => '_token',
+                    'userModel' => 'Users',
+                    //'scope' => ['Users.active' => 1],
+                    'fields' => [
+                        'id' => 'id'
+                    ]
+                ],
+                'FOC/Authenticate.MultiColumn' => $authConfig['authenticate']['FOC/Authenticate.MultiColumn']
+            ];
+        }
 
         // Enable Authorization using app_custom.php setting
         if (Configure::read('Security.Authorization.enabled')) {
