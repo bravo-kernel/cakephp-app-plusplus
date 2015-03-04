@@ -8,12 +8,13 @@
         "php": ">=5.4.16",
         "cakephp/cakephp": "3.0.*-dev",
         "cakephp/plugin-installer": "*",
+        "cakephp/migrations": "dev-master",
         "mobiledetect/mobiledetectlib": "2.*",
-        "dereuromark/cakephp-tinyauth": "dev-master",
+        "admad/cakephp-jwt-auth": "1.0.x-dev",
         "friendsofcake/authenticate": "dev-cake3",
+        "dereuromark/cakephp-tinyauth": "dev-master",
         "friendsofcake/crud": "dev-cake3",
-        "dereuromark/cakephp-tools": "dev-cake3",
-        "cakephp/migrations": "dev-master"
+        "dereuromark/cakephp-tools": "dev-cake3"
     },
     "require-dev": {
         "cakephp/debug_kit": "3.0.*-dev",
