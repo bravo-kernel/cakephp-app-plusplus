@@ -8,7 +8,6 @@
         "php": ">=5.4.16",
         "cakephp/cakephp": "3.0.*-dev",
         "cakephp/plugin-installer": "*",
-        "cakephp/migrations": "dev-master",
         "mobiledetect/mobiledetectlib": "2.*",
         "admad/cakephp-jwt-auth": "1.0.x-dev",
         "friendsofcake/authenticate": "dev-cake3",
@@ -17,8 +16,10 @@
         "dereuromark/cakephp-tools": "dev-cake3"
     },
     "require-dev": {
+        "cakephp/migrations": "dev-master",
         "cakephp/debug_kit": "3.0.*-dev",
-        "cakephp/bake": "dev-master"
+        "cakephp/bake": "dev-master",
+        "cakephp/codeception": "dev-master"
     },
     "suggest": {
         "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
