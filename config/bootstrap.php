@@ -184,7 +184,6 @@ Request::addDetector('tablet', function ($request) {
  *
  */
 
-Plugin::load('Migrations');
 Plugin::load('Tools', ['autoload' => true, 'bootstrap' => true]);
 Plugin::load('TinyAuth', ['bootstrap' => true]);
 Plugin::load('ADmad/JwtAuth');
@@ -194,6 +193,7 @@ Plugin::load('Crud');
 // Debug Kit should not be installed on a production system
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
+    Plugin::load('Migrations');
 }
 
 /**
